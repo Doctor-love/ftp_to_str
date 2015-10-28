@@ -65,7 +65,7 @@ def ftp_to_str(host=None, file_path=None, **kwargs):
         
         logger.info('Trying to retrive file "%s"' % file_path)
         download_target = StringIO.StringIO()
-        session.retrlines('RETR ' + file_path, download_target.write)
+        session.retrbinary('RETR ' + file_path, download_target.write)
 
         logger.debug('Reading file data')
         content_string = str(download_target.getvalue())
